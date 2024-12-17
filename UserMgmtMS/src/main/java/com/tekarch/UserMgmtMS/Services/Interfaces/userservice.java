@@ -8,4 +8,6 @@ public interface userservice
 {
     User addUser(User user);
     List<User> getAllUsers();
+    User updateUser(Long user_id,User userdetails);
+
 }

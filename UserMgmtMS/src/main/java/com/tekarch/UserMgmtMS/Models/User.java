@@ -1,9 +1,17 @@
 package com.tekarch.UserMgmtMS.Models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table
+@Getter
+@Setter
 public class User
 {
     @Id
@@ -13,46 +21,17 @@ public class User
     private String password;
     private String email;
     private int phone_number;
+    private String passwordHash;
+    private boolean twoFactorEnabled = false;
 
-    public int getPhone_number() {
-        return phone_number;
-    }
+    private String kycStatus = "pending";
 
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
-    }
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    public String getEmail() {
-        return email;
-    }
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 
 
 }
